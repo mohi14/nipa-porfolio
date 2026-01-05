@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { useState } from "react";
 
 // Asset URLs from Figma
 const imgRectangle22 = "https://www.figma.com/api/mcp/asset/c0c8fdbc-dfe4-4326-9652-e3d7be9cfeec";
@@ -93,56 +96,224 @@ function MediaSidebar() {
   );
 }
 
-// Hamburger Menu Icon
-function HamburgerIcon() {
-  return (
-    <button className="md:hidden w-6 h-6 flex flex-col justify-center items-end gap-1.5 cursor-pointer">
-      <div className="w-6 h-0.5 bg-[#d9d9d9]" />
-      <div className="w-4 h-0.5 bg-[#d9d9d9]" />
-    </button>
-  );
-}
-
-// Header component
+// Header component with mobile menu
 function Header() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isLangOpen, setIsLangOpen] = useState(false);
+  const [currentLang, setCurrentLang] = useState("EN");
+
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+  const closeMenu = () => setIsMenuOpen(false);
+  const toggleLang = () => setIsLangOpen(!isLangOpen);
+  
+  const selectLanguage = (lang: string) => {
+    setCurrentLang(lang);
+    setIsLangOpen(false);
+  };
+
+  const languages = ["EN", "RU", "UA"];
+
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-[#282c33]">
-      <div className="max-w-6xl mx-auto px-4 lg:px-8 py-4 md:py-8 flex items-center justify-between">
-        <a href="#home" className="flex items-center gap-2">
-          <div className="relative w-4 h-4">
-            <Image src={imgLogo} alt="Logo" fill className="object-contain" unoptimized />
-          </div>
-          <span className="text-white font-bold text-base">Elias</span>
-        </a>
-        {/* Mobile hamburger menu */}
-        <HamburgerIcon />
-        {/* Desktop navigation */}
-        <nav className="hidden md:flex items-center gap-8">
-          <a href="#home" className="flex text-base">
-            <span className="text-[#c778dd]">#</span>
-            <span className="text-white font-medium">home</span>
+    <>
+      <header className="fixed top-0 left-0 right-0 z-50 bg-[#282c33]">
+        <div className="max-w-6xl mx-auto px-4 lg:px-8 py-4 md:py-8 flex items-center justify-between">
+          <a href="#home" className="flex items-center gap-2">
+            <div className="relative w-4 h-4">
+              <Image src={imgLogo} alt="Logo" fill className="object-contain" unoptimized />
+            </div>
+            <span className="text-white font-bold text-base">Elias</span>
           </a>
-          <a href="#works" className="flex text-base hover:text-white transition-colors">
+          {/* Mobile hamburger menu button */}
+          <button
+            className="md:hidden w-6 h-6 flex flex-col justify-center items-end gap-1.5 cursor-pointer"
+            onClick={toggleMenu}
+            aria-label="Toggle menu"
+          >
+            <div className="w-6 h-0.5 bg-[#d9d9d9]" />
+            <div className="w-4 h-0.5 bg-[#d9d9d9]" />
+          </button>
+          {/* Desktop navigation */}
+          <nav className="hidden md:flex items-center gap-8">
+            <a href="#home" className="flex text-base">
+              <span className="text-[#c778dd]">#</span>
+              <span className="text-white font-medium">home</span>
+            </a>
+            <a href="#works" className="flex text-base hover:text-white transition-colors">
+              <span className="text-[#c778dd]">#</span>
+              <span className="text-[#abb2bf]">works</span>
+            </a>
+            <a href="#about-me" className="flex text-base hover:text-white transition-colors">
+              <span className="text-[#c778dd]">#</span>
+              <span className="text-[#abb2bf]">about-me</span>
+            </a>
+            <a href="#contacts" className="flex text-base hover:text-white transition-colors">
+              <span className="text-[#c778dd]">#</span>
+              <span className="text-[#abb2bf]">contacts</span>
+            </a>
+            {/* Desktop Language Dropdown */}
+            <div className="relative">
+              <button
+                className="flex items-center gap-1 text-[#abb2bf] cursor-pointer"
+                onClick={toggleLang}
+              >
+                <span className="font-semibold">{currentLang}</span>
+                <svg
+                  width="10"
+                  height="5"
+                  viewBox="0 0 10 5"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className={`transition-transform duration-200 ${isLangOpen ? "rotate-180" : ""}`}
+                >
+                  <path d="M5 5L0 0H10L5 5Z" fill="#abb2bf" />
+                </svg>
+              </button>
+              {/* Desktop Dropdown Menu */}
+              {isLangOpen && (
+                <div className="absolute top-full left-0 mt-2 bg-[#282c33] border border-[#abb2bf] p-2 flex flex-col gap-2">
+                  {languages
+                    .filter((lang) => lang !== currentLang)
+                    .map((lang) => (
+                      <button
+                        key={lang}
+                        className="text-[#abb2bf] hover:text-white transition-colors text-left"
+                        onClick={() => selectLanguage(lang)}
+                      >
+                        {lang}
+                      </button>
+                    ))}
+                </div>
+              )}
+            </div>
+          </nav>
+        </div>
+      </header>
+
+      {/* Mobile Menu Overlay */}
+      <div
+        className={`fixed inset-0 bg-[#282c33] z-[100] md:hidden transition-transform duration-300 ease-in-out ${
+          isMenuOpen ? "translate-x-0" : "translate-x-full"
+        }`}
+      >
+        {/* Mobile Menu Header */}
+        <div className="px-4 py-4 flex items-center justify-between">
+          <a href="#home" className="flex items-center gap-2" onClick={closeMenu}>
+            <div className="relative w-4 h-4">
+              <Image src={imgLogo} alt="Logo" fill className="object-contain" unoptimized />
+            </div>
+            <span className="text-white font-bold text-base">Elias</span>
+          </a>
+          {/* Close button (X) */}
+          <button
+            className="w-6 h-6 relative cursor-pointer"
+            onClick={closeMenu}
+            aria-label="Close menu"
+          >
+            <div className="absolute top-1/2 left-1/2 w-6 h-0.5 bg-[#d9d9d9] -translate-x-1/2 -translate-y-1/2 rotate-45" />
+            <div className="absolute top-1/2 left-1/2 w-6 h-0.5 bg-[#d9d9d9] -translate-x-1/2 -translate-y-1/2 -rotate-45" />
+          </button>
+        </div>
+
+        {/* Mobile Menu Navigation */}
+        <nav className="px-4 pt-12 flex flex-col gap-8">
+          <a
+            href="#home"
+            className="flex text-[32px] font-medium"
+            onClick={closeMenu}
+          >
+            <span className="text-[#c778dd]">#</span>
+            <span className="text-white">home</span>
+          </a>
+          <a
+            href="#works"
+            className="flex text-[32px]"
+            onClick={closeMenu}
+          >
             <span className="text-[#c778dd]">#</span>
             <span className="text-[#abb2bf]">works</span>
           </a>
-          <a href="#about-me" className="flex text-base hover:text-white transition-colors">
+          <a
+            href="#about-me"
+            className="flex text-[32px]"
+            onClick={closeMenu}
+          >
             <span className="text-[#c778dd]">#</span>
             <span className="text-[#abb2bf]">about-me</span>
           </a>
-          <a href="#contacts" className="flex text-base hover:text-white transition-colors">
+          <a
+            href="#contacts"
+            className="flex text-[32px]"
+            onClick={closeMenu}
+          >
             <span className="text-[#c778dd]">#</span>
             <span className="text-[#abb2bf]">contacts</span>
           </a>
-          <div className="flex items-center gap-1 text-[#abb2bf] cursor-pointer">
-            <span className="font-semibold">EN</span>
-            <svg width="10" height="5" viewBox="0 0 10 5" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M5 5L0 0H10L5 5Z" fill="#abb2bf" />
-            </svg>
+          {/* Mobile Language Switcher with Dropdown */}
+          <div className="relative">
+            <button
+              className="flex items-center gap-2 text-[#abb2bf] cursor-pointer"
+              onClick={toggleLang}
+            >
+              <span className="font-semibold text-[32px]">{currentLang}</span>
+              <svg
+                width="14"
+                height="7"
+                viewBox="0 0 10 5"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className={`transition-transform duration-200 ${isLangOpen ? "rotate-180" : ""}`}
+              >
+                <path d="M5 5L0 0H10L5 5Z" fill="#abb2bf" />
+              </svg>
+            </button>
+            {/* Mobile Dropdown Menu */}
+            {isLangOpen && (
+              <div className="mt-4 bg-[#282c33] border border-[#abb2bf] p-3 flex flex-col gap-3">
+                {languages
+                  .filter((lang) => lang !== currentLang)
+                  .map((lang) => (
+                    <button
+                      key={lang}
+                      className="text-[#abb2bf] hover:text-white transition-colors text-left text-2xl"
+                      onClick={() => selectLanguage(lang)}
+                    >
+                      {lang}
+                    </button>
+                  ))}
+              </div>
+            )}
           </div>
         </nav>
+
+        {/* Mobile Menu Social Icons */}
+        <div className="absolute bottom-20 left-0 right-0 flex justify-center gap-4">
+          <a
+            href="https://github.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-16 h-16 flex items-center justify-center hover:opacity-70 transition-opacity"
+          >
+            <GithubIcon className="w-10 h-10" />
+          </a>
+          <a
+            href="https://dribbble.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-16 h-16 flex items-center justify-center hover:opacity-70 transition-opacity"
+          >
+            <DribbbleIcon className="w-10 h-10" />
+          </a>
+          <a
+            href="https://figma.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-16 h-16 flex items-center justify-center hover:opacity-70 transition-opacity"
+          >
+            <FigmaIcon className="w-10 h-10" />
+          </a>
+        </div>
       </div>
-    </header>
+    </>
   );
 }
 
