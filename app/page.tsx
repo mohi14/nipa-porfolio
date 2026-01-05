@@ -142,11 +142,11 @@ function Header() {
               <span className="text-[#c778dd]">#</span>
               <span className="text-[#abb2bf]">works</span>
             </a>
-            <a href="#about-me" className="flex text-base hover:text-white transition-colors">
+            <a href="/about" className="flex text-base hover:text-white transition-colors">
               <span className="text-[#c778dd]">#</span>
               <span className="text-[#abb2bf]">about-me</span>
             </a>
-            <a href="#contacts" className="flex text-base hover:text-white transition-colors">
+            <a href="/contacts" className="flex text-base hover:text-white transition-colors">
               <span className="text-[#c778dd]">#</span>
               <span className="text-[#abb2bf]">contacts</span>
             </a>
@@ -233,7 +233,7 @@ function Header() {
             <span className="text-[#abb2bf]">works</span>
           </a>
           <a
-            href="#about-me"
+            href="/about"
             className="flex text-[32px]"
             onClick={closeMenu}
           >
@@ -241,7 +241,7 @@ function Header() {
             <span className="text-[#abb2bf]">about-me</span>
           </a>
           <a
-            href="#contacts"
+            href="/contacts"
             className="flex text-[32px]"
             onClick={closeMenu}
           >
