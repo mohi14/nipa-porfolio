@@ -29,3 +29,641 @@ body {
 html {
   scroll-behavior: smooth;
 }
+
+/* Hide default cursor on desktop */
+@media (hover: hover) and (pointer: fine) {
+  * {
+    cursor: none !important;
+  }
+}
+
+/* Custom cursor animations */
+@keyframes spin-slow {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes orbit {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg) translateX(16px);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg) translateX(16px);
+  }
+}
+
+@keyframes ping-slow {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.6;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.8);
+    opacity: 0;
+  }
+}
+
+@keyframes ping-slower {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.4;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(2);
+    opacity: 0;
+  }
+}
+
+@keyframes ripple {
+  0% {
+    transform: translate(-50%, -50%) scale(0.5);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(2);
+    opacity: 0;
+  }
+}
+
+@keyframes ripple-delay {
+  0% {
+    transform: translate(-50%, -50%) scale(0.5);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.8);
+    opacity: 0;
+  }
+}
+
+@keyframes particle {
+  0% {
+    transform: rotate(var(--rotation)) translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(var(--rotation)) translateX(30px);
+    opacity: 0;
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px var(--primary), 0 0 40px var(--primary);
+  }
+  50% {
+    box-shadow: 0 0 30px var(--primary), 0 0 60px var(--primary), 0 0 80px var(--primary);
+  }
+}
+
+@keyframes magnetic-pull {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 3s linear infinite;
+}
+
+.animate-spin-medium {
+  animation: spin-slow 1.5s linear infinite;
+}
+
+.animate-orbit {
+  animation: orbit 2s linear infinite;
+}
+
+.animate-ping-slow {
+  animation: ping-slow 1.5s ease-out infinite;
+}
+
+.animate-ping-slower {
+  animation: ping-slower 1.5s ease-out infinite;
+  animation-delay: 0.3s;
+}
+
+.animate-ripple {
+  animation: ripple 0.6s ease-out forwards;
+}
+
+.animate-ripple-delay {
+  animation: ripple-delay 0.6s ease-out forwards;
+  animation-delay: 0.1s;
+}
+
+.animate-particle {
+  animation: particle 0.6s ease-out forwards;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-magnetic {
+  animation: magnetic-pull 0.3s ease-out;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.2s ease-out forwards;
+}
+
+.animate-burst-1 {
+  animation: burst 0.4s ease-out forwards;
+}
+
+.animate-burst-2 {
+  animation: burst 0.4s ease-out forwards;
+  animation-delay: 0.05s;
+}
+
+.animate-burst-3 {
+  animation: burst 0.4s ease-out forwards;
+  animation-delay: 0.1s;
+}
+
+.animate-spark {
+  animation: spark 0.3s ease-out forwards;
+}
+
+.animate-scan {
+  animation: scan 2s ease-in-out infinite;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes burst {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(4);
+    opacity: 0;
+  }
+}
+
+@keyframes spark {
+  0% {
+    height: 0;
+    opacity: 1;
+  }
+  50% {
+    height: 12px;
+    opacity: 1;
+  }
+  100% {
+    height: 0;
+    opacity: 0;
+    transform: rotate(var(--rotation, 0deg)) translateY(-20px);
+  }
+}
+
+@keyframes scan {
+  0%, 100% {
+    transform: translateX(-50%) translateY(-10px);
+    opacity: 0;
+  }
+  50% {
+    transform: translateX(-50%) translateY(10px);
+    opacity: 1;
+  }
+}
+
+@keyframes char-fade {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.5) translateY(-10px);
+  }
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+@keyframes typewriter {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes code-burst {
+  0% {
+    opacity: 1;
+    transform: rotate(var(--rotation, 0deg)) translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(var(--rotation, 0deg)) translateY(-30px);
+  }
+}
+
+@keyframes binary-burst {
+  0% {
+    opacity: 1;
+    transform: rotate(var(--rotation, 0deg)) translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(var(--rotation, 0deg)) translateX(25px);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes pulse-slow {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 0.5; }
+}
+
+.animate-char-fade {
+  animation: char-fade 0.8s ease-out forwards;
+}
+
+.animate-blink {
+  animation: blink 0.8s step-end infinite;
+}
+
+.animate-typewriter {
+  animation: typewriter 0.3s steps(20) forwards;
+}
+
+.animate-code-burst {
+  animation: code-burst 0.5s ease-out forwards;
+}
+
+.animate-binary-burst {
+  animation: binary-burst 0.4s ease-out forwards;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 2s ease-in-out infinite;
+}
+/* Hexagon cursor animations */
+@keyframes pulse-fast {
+  0%, 100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) rotate(var(--rotation, 0deg)) translateY(-30px) scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: translate(-50%, -50%) rotate(var(--rotation, 0deg)) translateY(-30px) scale(1.5);
+  }
+}
+
+@keyframes energy-pulse {
+  0% {
+    opacity: 0;
+    width: 0;
+  }
+  50% {
+    opacity: 1;
+    width: 20px;
+  }
+  100% {
+    opacity: 0;
+    width: 30px;
+  }
+}
+
+@keyframes shockwave {
+  0% {
+    transform: scale(0.5);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+@keyframes shockwave-delay {
+  0% {
+    transform: scale(0.5);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
+.animate-pulse-fast {
+  animation: pulse-fast 1s ease-in-out infinite;
+}
+
+.animate-energy-pulse {
+  animation: energy-pulse 1.5s ease-in-out infinite;
+}
+
+.animate-shockwave {
+  animation: shockwave 0.5s ease-out forwards;
+}
+
+.animate-shockwave-delay {
+  animation: shockwave-delay 0.5s ease-out forwards;
+  animation-delay: 0.1s;
+}
+
+/* Glitch cursor animations */
+@keyframes corner-pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.1);
+  }
+}
+
+@keyframes scan-line {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes noise-particle {
+  0%, 100% {
+    opacity: 0;
+    transform: rotate(var(--rotation, 0deg)) translateY(-25px) scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: rotate(var(--rotation, 0deg)) translateY(-30px) scale(2);
+  }
+}
+
+.animate-corner-pulse {
+  animation: corner-pulse 1s ease-in-out infinite;
+}
+
+.animate-scan-line {
+  animation: scan-line 0.3s ease-out forwards;
+}
+
+.animate-noise-particle {
+  animation: noise-particle 1.5s ease-in-out infinite;
+}
+
+/* New hover and click animations */
+@keyframes magnetic-orbit {
+  0% {
+    transform: rotate(0deg) translateX(24px) rotate(0deg);
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: rotate(360deg) translateX(24px) rotate(-360deg);
+    opacity: 1;
+  }
+}
+
+@keyframes hover-ring-1 {
+  0% {
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0.6;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.5);
+    opacity: 0;
+  }
+}
+
+@keyframes hover-ring-2 {
+  0% {
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0.4;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.8);
+    opacity: 0;
+  }
+}
+
+@keyframes lightning {
+  0% {
+    stroke-dasharray: 0 100;
+    opacity: 1;
+  }
+  50% {
+    stroke-dasharray: 50 100;
+    opacity: 1;
+  }
+  100% {
+    stroke-dasharray: 100 100;
+    opacity: 0;
+  }
+}
+
+@keyframes click-flash {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+  }
+}
+
+@keyframes electric-ring {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+    border-width: 3px;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(4);
+    opacity: 0;
+    border-width: 1px;
+  }
+}
+
+@keyframes float-data {
+  0%, 100% {
+    opacity: 0.4;
+    transform: rotate(var(--rotation, 0deg)) translateY(-35px) scale(0.9);
+  }
+  50% {
+    opacity: 0.8;
+    transform: rotate(var(--rotation, 0deg)) translateY(-40px) scale(1.1);
+  }
+}
+
+@keyframes glitch-text {
+  0%, 100% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+  25% {
+    transform: translate(-2px, 1px);
+  }
+  50% {
+    transform: translate(2px, -1px);
+  }
+  75% {
+    transform: translate(-1px, -1px);
+  }
+}
+
+.animate-magnetic-orbit {
+  animation: magnetic-orbit 3s linear infinite;
+}
+
+.animate-hover-ring-1 {
+  animation: hover-ring-1 1.5s ease-out infinite;
+}
+
+.animate-hover-ring-2 {
+  animation: hover-ring-2 1.5s ease-out infinite;
+  animation-delay: 0.3s;
+}
+
+.animate-lightning {
+  animation: lightning 0.3s ease-out forwards;
+}
+
+.animate-click-flash {
+  animation: click-flash 0.2s ease-out forwards;
+}
+
+.animate-electric-ring {
+  animation: electric-ring 0.4s ease-out forwards;
+}
+
+.animate-float-data {
+  animation: float-data 2s ease-in-out infinite;
+}
+
+.animate-glitch-text {
+  animation: glitch-text 0.2s ease-in-out;
+}
+
+/* Magic star cursor animations */
+@keyframes twinkle-v {
+  0%, 100% {
+    height: 8px;
+    opacity: 0.6;
+  }
+  50% {
+    height: 20px;
+    opacity: 1;
+  }
+}
+
+@keyframes twinkle-h {
+  0%, 100% {
+    width: 8px;
+    opacity: 0.6;
+  }
+  50% {
+    width: 20px;
+    opacity: 1;
+  }
+}
+
+@keyframes pulse-ring {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.4;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.6;
+  }
+}
+
+@keyframes magic-dust {
+  0%, 100% {
+    opacity: 0;
+    transform: rotate(var(--rotation, 0deg)) translateY(-30px) scale(0.5);
+  }
+  50% {
+    opacity: 1;
+    transform: rotate(var(--rotation, 0deg)) translateY(-35px) scale(1.2);
+  }
+}
+
+.animate-twinkle-v {
+  animation: twinkle-v 0.8s ease-in-out infinite;
+}
+
+.animate-twinkle-h {
+  animation: twinkle-h 0.8s ease-in-out infinite;
+  animation-delay: 0.2s;
+}
+
+.animate-pulse-ring {
+  animation: pulse-ring 1.5s ease-in-out infinite;
+}
+
+.animate-magic-dust {
+  animation: magic-dust 1.5s ease-in-out infinite;
+}
+
+/* Simple cursor animation */
+@keyframes simple-ripple {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
+
+@keyframes pulse-subtle {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+}
+
+.animate-simple-ripple {
+  animation: simple-ripple 0.4s ease-out forwards;
+}
+
+.animate-pulse-subtle {
+  animation: pulse-subtle 1.5s ease-in-out infinite;
+}

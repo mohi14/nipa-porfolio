@@ -515,14 +515,14 @@ export default function Home() {
               <Image src={imgFrame49} alt="" fill className="object-contain" unoptimized />
             </div>
             <p className="text-white text-lg md:text-xl lg:text-2xl font-medium text-center">
-              With great power comes great electricity bill
+              With great code power comes great bugs
             </p>
             <div className="absolute -bottom-4 right-4 w-8 md:w-10 h-6 md:h-7">
               <Image src={imgFrame49} alt="" fill className="object-contain" unoptimized />
             </div>
             {/* Author */}
             <div className="absolute -bottom-10 md:-bottom-12 right-0 border border-[#abb2bf] p-3 md:p-4">
-              <p className="text-white text-lg md:text-xl lg:text-2xl">- Dr. Who</p>
+              <p className="text-white text-lg md:text-xl lg:text-2xl">- Mr. Mohi</p>
             </div>
           </div>
         </div>
