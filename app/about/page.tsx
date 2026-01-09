@@ -105,7 +105,7 @@ function Header() {
             <div className="relative w-4 h-4">
               <Image src={imgLogo} alt="Logo" fill className="object-contain" unoptimized />
             </div>
-            <span className="text-white font-bold text-base">Elias</span>
+            <span className="text-white font-bold text-base">Nipa</span>
           </a>
           {/* Mobile hamburger menu button */}
           <button
@@ -183,7 +183,7 @@ function Header() {
             <div className="relative w-4 h-4">
               <Image src={imgLogo} alt="Logo" fill className="object-contain" unoptimized />
             </div>
-            <span className="text-white font-bold text-base">Elias</span>
+            <span className="text-white font-bold text-base">Nipa</span>
           </a>
           <button
             className="w-6 h-6 relative cursor-pointer"
@@ -312,10 +312,10 @@ function Footer() {
                 <div className="relative w-4 h-4">
                   <Image src={imgLogo} alt="Logo" fill className="object-contain" unoptimized />
                 </div>
-                <span className="text-white font-medium text-base">Elias</span>
+                <span className="text-white font-medium text-base">Nipa</span>
               </div>
-              <a href="mailto:elias@elias-dev.ml" className="text-[#abb2bf] hover:text-white transition-colors text-sm md:text-base">
-                elias@elias-dev.ml
+              <a href="mailto:nipa@nipa-dev.ml" className="text-[#abb2bf] hover:text-white transition-colors text-sm md:text-base">
+                nipa@nipa-dev.ml
               </a>
             </div>
             <p className="text-white text-sm md:text-base">Web designer and front-end developer</p>
@@ -335,7 +335,7 @@ function Footer() {
             </div>
           </div>
         </div>
-        <p className="text-[#abb2bf] text-sm md:text-base text-center">© Copyright 2022. Made by Elias</p>
+        <p className="text-[#abb2bf] text-sm md:text-base text-center">© Copyright 2022. Made by Nipa</p>
       </div>
     </footer>
   );
@@ -396,7 +396,7 @@ export default function AboutPage() {
             {/* Text content */}
             <div className="flex-1 order-2 lg:order-1">
               <div className="text-[#abb2bf] text-base leading-relaxed space-y-4">
-                <p>Hello, i&apos;m Elias!</p>
+                <p>Hello, i&apos;m Nipa!</p>
                 <p>
                   I&apos;m a self-taught front-end developer based in Kyiv, Ukraine. I can develop responsive websites from scratch and raise them into modern user-friendly web experiences.
                 </p>
@@ -412,7 +412,7 @@ export default function AboutPage() {
                 <div className="relative w-full max-w-sm mx-auto h-96 lg:h-[500px]">
                   <Image
                     src={imgAboutImage}
-                    alt="About Elias"
+                    alt="About Nipa"
                     fill
                     className="object-contain"
                     unoptimized

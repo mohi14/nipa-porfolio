@@ -120,7 +120,7 @@ function Header() {
             <div className="relative w-4 h-4">
               <Image src={imgLogo} alt="Logo" fill className="object-contain" unoptimized />
             </div>
-            <span className="text-white font-bold text-base">Elias</span>
+            <span className="text-white font-bold text-base">Nipa</span>
           </a>
           {/* Mobile hamburger menu button */}
           <button
@@ -198,7 +198,7 @@ function Header() {
             <div className="relative w-4 h-4">
               <Image src={imgLogo} alt="Logo" fill className="object-contain" unoptimized />
             </div>
-            <span className="text-white font-bold text-base">Elias</span>
+            <span className="text-white font-bold text-base">Nipa</span>
           </a>
           <button
             className="w-6 h-6 relative cursor-pointer"
@@ -303,10 +303,10 @@ function Footer() {
                 <div className="relative w-4 h-4">
                   <Image src={imgLogo} alt="Logo" fill className="object-contain" unoptimized />
                 </div>
-                <span className="text-white font-medium text-base">Elias</span>
+                <span className="text-white font-medium text-base">Nipa</span>
               </div>
-              <a href="mailto:elias@elias-dev.ml" className="text-[#abb2bf] hover:text-white transition-colors text-sm md:text-base">
-                elias@elias-dev.ml
+              <a href="mailto:nipa@nipa-dev.ml" className="text-[#abb2bf] hover:text-white transition-colors text-sm md:text-base">
+                nipa@nipa-dev.ml
               </a>
             </div>
             <p className="text-white text-sm md:text-base">Web designer and front-end developer</p>
@@ -326,7 +326,7 @@ function Footer() {
             </div>
           </div>
         </div>
-        <p className="text-[#abb2bf] text-sm md:text-base text-center">© Copyright 2022. Made by Elias</p>
+        <p className="text-[#abb2bf] text-sm md:text-base text-center">© Copyright 2022. Made by Nipa</p>
       </div>
     </footer>
   );
@@ -406,8 +406,8 @@ export default function ContactsPage() {
               </ContactCard>
 
               <ContactCard title="Message me here">
-                <ContactLink icon={DiscordIcon} label="Elias#1234" />
-                <ContactLink icon={EmailIcon} label="elias@elias-dev.ml" href="mailto:elias@elias-dev.ml" />
+                <ContactLink icon={DiscordIcon} label="Nipa#1234" />
+                <ContactLink icon={EmailIcon} label="nipa@nipa-dev.ml" href="mailto:nipa@nipa-dev.ml" />
               </ContactCard>
             </div>
           </div>

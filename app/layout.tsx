@@ -3,6 +3,7 @@ import { Fira_Code } from "next/font/google";
 import "./globals.css";
 import CustomCursor from "./components/CustomCursor";
 
+
 const firaCode = Fira_Code({
   variable: "--font-fira-code",
   subsets: ["latin"],
@@ -10,8 +11,8 @@ const firaCode = Fira_Code({
 });
 
 export const metadata: Metadata = {
-  title: "Elias - Web Designer & Front-end Developer",
-  description: "Portfolio of Elias - Web designer and front-end developer",
+  title: "Nipa - Web Designer & Front-end Developer",
+  description: "Portfolio of Nipa - Web designer and front-end developer",
 };
 
 export default function RootLayout({

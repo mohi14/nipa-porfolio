@@ -121,7 +121,7 @@ function Header() {
             <div className="relative w-4 h-4">
               <Image src={imgLogo} alt="Logo" fill className="object-contain" unoptimized />
             </div>
-            <span className="text-white font-bold text-base">Elias</span>
+            <span className="text-white font-bold text-base">Nipa</span>
           </a>
           {/* Mobile hamburger menu button */}
           <button
@@ -201,7 +201,7 @@ function Header() {
             <div className="relative w-4 h-4">
               <Image src={imgLogo} alt="Logo" fill className="object-contain" unoptimized />
             </div>
-            <span className="text-white font-bold text-base">Elias</span>
+            <span className="text-white font-bold text-base">Nipa</span>
           </a>
           {/* Close button (X) */}
           <button
@@ -414,10 +414,10 @@ function Footer() {
                 <div className="relative w-4 h-4">
                   <Image src={imgLogo} alt="Logo" fill className="object-contain" unoptimized />
                 </div>
-                <span className="text-white font-medium text-base">Elias</span>
+                <span className="text-white font-medium text-base">Nipa</span>
               </div>
-              <a href="mailto:elias@elias-dev.ml" className="text-[#abb2bf] hover:text-white transition-colors text-sm md:text-base">
-                elias@elias-dev.ml
+              <a href="mailto:nipa@nipa-dev.ml" className="text-[#abb2bf] hover:text-white transition-colors text-sm md:text-base">
+                nipa@nipa-dev.ml
               </a>
             </div>
             <p className="text-white text-sm md:text-base">Web designer and front-end developer</p>
@@ -437,7 +437,7 @@ function Footer() {
             </div>
           </div>
         </div>
-        <p className="text-[#abb2bf] text-sm md:text-base text-center">© Copyright 2022. Made by Elias</p>
+        <p className="text-[#abb2bf] text-sm md:text-base text-center">© Copyright 2022. Made by Nipa</p>
       </div>
     </footer>
   );
@@ -456,11 +456,11 @@ export default function Home() {
           <div className="flex flex-col lg:flex-row items-center gap-4 md:gap-8 lg:gap-16">
             <div className="flex-1 order-1 lg:order-1">
               <h1 className="text-[32px] md:text-3xl lg:text-4xl font-semibold text-white mb-4 md:mb-8 leading-tight">
-                Elias is a <span className="text-[#c778dd]">web designer</span> and{" "}
+                Nipa is a <span className="text-[#c778dd]">web designer</span> and{" "}
                 <span className="text-[#c778dd]">front-end developer</span>
               </h1>
               <p className="text-[#abb2bf] text-base mb-4 md:mb-8 leading-relaxed">
-                He crafts responsive websites where technologies meet creativity
+                She crafts responsive websites where technologies meet creativity
               </p>
               <a
                 href="#contacts"
@@ -484,7 +484,7 @@ export default function Home() {
                 <div className="relative w-full h-64 md:h-80 lg:h-96 z-10">
                   <Image
                     src={imgImage1}
-                    alt="Elias"
+                    alt="Nipa"
                     fill
                     className="object-contain object-center"
                     unoptimized
@@ -593,7 +593,7 @@ export default function Home() {
           <div className="flex flex-col lg:flex-row gap-8 lg:gap-16">
             <div className="flex-1">
               <div className="text-[#abb2bf] text-base leading-relaxed space-y-4">
-                <p>Hello, i&apos;m Elias!</p>
+                <p>Hello, i&apos;m Nipa!</p>
                 <p>
                   I&apos;m a self-taught front-end developer based in Kyiv, Ukraine. I can develop
                   responsive websites from scratch and raise them into modern user-friendly web
@@ -616,7 +616,7 @@ export default function Home() {
               <div className="relative w-full h-96 lg:h-[500px]">
                 <Image
                   src={imgImage}
-                  alt="Elias"
+                  alt="Nipa"
                   fill
                   className="object-contain object-center"
                   unoptimized
@@ -646,11 +646,11 @@ export default function Home() {
               <div className="flex flex-col gap-2">
                 <div className="flex items-center gap-2">
                   <DiscordIcon className="w-8 h-8" />
-                  <span className="text-[#abb2bf] text-base">!Elias#3519</span>
+                  <span className="text-[#abb2bf] text-base">!Nipa#3519</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <EmailIcon className="w-8 h-8" />
-                  <span className="text-[#abb2bf] text-base">elias@elias.me</span>
+                  <span className="text-[#abb2bf] text-base">nipa@nipa.me</span>
                 </div>
               </div>
             </div>
