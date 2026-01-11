@@ -10,7 +10,7 @@ export default function CustomCursor() {
   const [isVisible, setIsVisible] = useState(false);
   const [glitchOffset, setGlitchOffset] = useState({ x: 0, y: 0 });
   const [isGlitching, setIsGlitching] = useState(false);
-  const requestRef = useRef<number>();
+  const requestRef = useRef<number | null>(null);
 
   const updateCursorType = useCallback((e: MouseEvent) => {
     const target = e.target as HTMLElement;

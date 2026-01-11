@@ -8,7 +8,7 @@ export default function CustomCursor() {
   const [isPointer, setIsPointer] = useState(false);
   const [isClicking, setIsClicking] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
-  const requestRef = useRef<number>();
+  const requestRef = useRef<number | null>(null);
 
   const updateCursorType = useCallback((e: MouseEvent) => {
     const target = e.target as HTMLElement;
