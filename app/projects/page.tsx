@@ -2,6 +2,15 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import { motion } from "framer-motion";
+import {
+  ScrollReveal,
+  ParticleField,
+  GradientOrb,
+  MorphingBlob,
+  SpotlightCursor,
+  TiltCard,
+} from "../components/AnimatedComponents";
 
 // Asset URLs from Figma
 const imgRectangle22 = "https://www.figma.com/api/mcp/asset/dfc24d53-651e-4f9b-92da-7a2e24c91d01";
@@ -67,7 +76,7 @@ function Dots({ className, rows = 5, cols = 5 }: { className?: string; rows?: nu
 // Media sidebar component
 function MediaSidebar() {
   return (
-    <div className="fixed left-4 top-0 h-full flex flex-col items-center gap-2 z-50 hidden lg:flex">
+    <div className="fixed left-4 top-0 h-full hidden lg:flex lg:flex-col items-center gap-2 z-50">
       <div className="w-px h-48 bg-[#abb2bf]" />
       <div className="flex flex-col gap-2">
         <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="w-8 h-8 flex items-center justify-center hover:opacity-70 transition-opacity">
@@ -179,7 +188,7 @@ function Header() {
 
       {/* Mobile Menu Overlay */}
       <div
-        className={`fixed inset-0 bg-[#282c33] z-[100] md:hidden transition-transform duration-300 ease-in-out ${
+        className={`fixed inset-0 bg-[#282c33] z-100 md:hidden transition-transform duration-300 ease-in-out ${
           isMenuOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
@@ -551,76 +560,116 @@ const smallProjects = [
 // Main Projects Page Component
 export default function ProjectsPage() {
   return (
-    <div className="bg-[#282c33] min-h-screen font-[family-name:var(--font-fira-code)]">
-      <Header />
-      <MediaSidebar />
+    <div className="bg-[#282c33] min-h-screen font-(family-name:--font-fira-code) overflow-hidden">
+      {/* Animated background effects container */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
+        <ParticleField count={35} className="opacity-30" />
+        <MorphingBlob className="w-80 h-80 -top-20 -right-20" color="#c778dd" />
+        <MorphingBlob className="w-64 h-64 top-[60%] -left-32" color="#61afef" />
+        <GradientOrb className="w-120 h-120 -top-40 -right-40" color="#c778dd" />
+        <GradientOrb className="w-80 h-80 top-[70%] -left-24" color="#61afef" />
+      </div>
 
       {/* Background decorations */}
-      <div className="fixed inset-0 pointer-events-none overflow-hidden">
+      <div className="fixed inset-0 pointer-events-none overflow-hidden z-10">
         {/* Top right square */}
         <div className="absolute -right-12 top-64 w-40 h-40 border border-[#abb2bf] hidden lg:block" />
         {/* Bottom left square */}
         <div className="absolute -left-12 bottom-96 w-40 h-40 border border-[#abb2bf] hidden lg:block" />
         {/* Dots decorations */}
-        <Dots className="absolute -left-4 top-[500px] hidden lg:flex" rows={4} cols={5} />
-        <Dots className="absolute right-4 bottom-[600px] hidden lg:flex" rows={5} cols={5} />
+        <Dots className="absolute -left-4 top-125 hidden lg:flex" rows={4} cols={5} />
+        <Dots className="absolute right-4 bottom-150 hidden lg:flex" rows={5} cols={5} />
       </div>
 
       {/* Page Title Section */}
-      <section className="pt-24 md:pt-32 pb-8 md:pb-12">
+      <section className="pt-24 md:pt-32 pb-8 md:pb-12 relative z-20">
         <div className="max-w-6xl mx-auto px-4 lg:px-8">
-          <div className="mb-4">
-            <h1 className="text-2xl md:text-3xl font-semibold">
-              <span className="text-[#c778dd]">/</span>
-              <span className="text-white">projects</span>
-            </h1>
-          </div>
-          <p className="text-white text-base">List of my projects</p>
+          <ScrollReveal>
+            <div className="mb-4">
+              <motion.h1 
+                className="text-2xl md:text-3xl font-semibold"
+                initial={{ opacity: 0, x: -30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6 }}
+              >
+                <span className="text-[#c778dd]">/</span>
+                <span className="text-white">projects</span>
+              </motion.h1>
+            </div>
+            <motion.p 
+              className="text-white text-base"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              List of my projects
+            </motion.p>
+          </ScrollReveal>
         </div>
       </section>
 
       {/* Complete Apps Section */}
-      <section className="py-8 md:py-12">
+      <section className="py-8 md:py-12 relative z-20">
         <div className="max-w-6xl mx-auto px-4 lg:px-8">
-          <SectionHeader title="complete-apps" />
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {completeProjects.map((project, index) => (
-              <CompleteProjectCard
-                key={index}
-                image={project.image}
-                technologies={project.technologies}
-                title={project.title}
-                description={project.description}
-                liveLink={project.liveLink}
-                cachedLink={project.cachedLink}
-                githubLink={project.githubLink}
-              />
-            ))}
-          </div>
+          <ScrollReveal>
+            <SectionHeader title="complete-apps" />
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {completeProjects.map((project, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                >
+                  <TiltCard>
+                    <CompleteProjectCard
+                      image={project.image}
+                      technologies={project.technologies}
+                      title={project.title}
+                      description={project.description}
+                      liveLink={project.liveLink}
+                      cachedLink={project.cachedLink}
+                      githubLink={project.githubLink}
+                    />
+                  </TiltCard>
+                </motion.div>
+              ))}
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 
       {/* Small Projects Section */}
-      <section className="py-8 md:py-12">
+      <section className="py-8 md:py-12 relative z-20">
         <div className="max-w-6xl mx-auto px-4 lg:px-8">
-          <SectionHeader title="small-projects" />
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {smallProjects.map((project, index) => (
-              <SmallProjectCard
-                key={index}
-                technologies={project.technologies}
-                title={project.title}
-                description={project.description}
-                liveLink={project.liveLink}
-                githubLink={project.githubLink}
-                figmaLink={project.figmaLink}
-              />
-            ))}
-          </div>
+          <ScrollReveal>
+            <SectionHeader title="small-projects" />
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {smallProjects.map((project, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.08 }}
+                  viewport={{ once: true }}
+                >
+                  <TiltCard>
+                    <SmallProjectCard
+                      technologies={project.technologies}
+                      title={project.title}
+                      description={project.description}
+                      liveLink={project.liveLink}
+                      githubLink={project.githubLink}
+                      figmaLink={project.figmaLink}
+                    />
+                  </TiltCard>
+                </motion.div>
+              ))}
+            </div>
+          </ScrollReveal>
         </div>
       </section>
-
-      <Footer />
     </div>
   );
 }

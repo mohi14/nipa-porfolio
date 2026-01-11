@@ -2,6 +2,15 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import { motion } from "framer-motion";
+import {
+  ScrollReveal,
+  ParticleField,
+  GradientOrb,
+  MorphingBlob,
+  SpotlightCursor,
+  TiltCard,
+} from "../components/AnimatedComponents";
 
 // Asset URLs from Figma
 const imgVector = "https://www.figma.com/api/mcp/asset/664768c4-7c1c-4836-a13f-3772910e1f41";
@@ -78,7 +87,7 @@ function Dots({ className, rows = 5, cols = 5 }: { className?: string; rows?: nu
 // Media sidebar component
 function MediaSidebar() {
   return (
-    <div className="fixed left-4 top-0 h-full flex flex-col items-center gap-2 z-50 hidden lg:flex">
+    <div className="fixed left-4 top-0 h-full hidden lg:flex lg:flex-col items-center gap-2 z-50">
       <div className="w-px h-48 bg-[#abb2bf]" />
       <div className="flex flex-col gap-2">
         <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="w-8 h-8 flex items-center justify-center hover:opacity-70 transition-opacity">
@@ -189,7 +198,7 @@ function Header() {
 
       {/* Mobile Menu Overlay */}
       <div
-        className={`fixed inset-0 bg-[#282c33] z-[100] md:hidden transition-transform duration-300 ease-in-out ${
+        className={`fixed inset-0 bg-[#282c33] z-100 md:hidden transition-transform duration-300 ease-in-out ${
           isMenuOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
@@ -365,103 +374,169 @@ function ContactLink({ icon: Icon, label, href }: { icon: React.ComponentType<{ 
 // Main Contacts Page Component
 export default function ContactsPage() {
   return (
-    <div className="bg-[#282c33] min-h-screen font-[family-name:var(--font-fira-code)]">
-      <Header />
-      <MediaSidebar />
+    <div className="bg-[#282c33] min-h-screen font-(family-name:--font-fira-code) overflow-hidden">
+      {/* Animated background effects container */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
+        <ParticleField count={25} className="opacity-30" />
+        <MorphingBlob className="w-72 h-72 -top-16 -right-16" color="#c778dd" />
+        <MorphingBlob className="w-56 h-56 top-[70%] -left-24" color="#61afef" />
+        <GradientOrb className="w-100 h-100 -top-32 -right-32" color="#c778dd" />
+        <GradientOrb className="w-72 h-72 top-[80%] -left-20" color="#61afef" />
+      </div>
 
       {/* Background decorations */}
-      <div className="fixed inset-0 pointer-events-none overflow-hidden">
+      <div className="fixed inset-0 pointer-events-none overflow-hidden z-10">
         <div className="absolute -right-12 top-64 w-40 h-40 border border-[#abb2bf] hidden lg:block" />
-        <Dots className="absolute right-8 top-[400px] hidden lg:flex" rows={5} cols={5} />
+        <Dots className="absolute right-8 top-100 hidden lg:flex" rows={5} cols={5} />
       </div>
 
       {/* Page Title Section */}
-      <section className="pt-24 md:pt-32 pb-8 md:pb-12">
+      <section className="pt-24 md:pt-32 pb-8 md:pb-12 relative z-20">
         <div className="max-w-6xl mx-auto px-4 lg:px-8">
-          <div className="mb-4">
-            <h1 className="text-2xl md:text-3xl font-semibold">
-              <span className="text-[#c778dd]">/</span>
-              <span className="text-white">contacts</span>
-            </h1>
-          </div>
-          <p className="text-white text-base">Who am i?</p>
+          <ScrollReveal>
+            <div className="mb-4">
+              <motion.h1 
+                className="text-2xl md:text-3xl font-semibold"
+                initial={{ opacity: 0, x: -30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6 }}
+              >
+                <span className="text-[#c778dd]">/</span>
+                <span className="text-white">contacts</span>
+              </motion.h1>
+            </div>
+            <motion.p 
+              className="text-white text-base"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              Who am i?
+            </motion.p>
+          </ScrollReveal>
         </div>
       </section>
 
       {/* Contact Info Section */}
-      <section className="py-8 md:py-12">
+      <section className="py-8 md:py-12 relative z-20">
         <div className="max-w-6xl mx-auto px-4 lg:px-8">
-          <div className="flex flex-col lg:flex-row gap-8 lg:gap-16">
-            {/* Left side - description */}
-            <div className="flex-1">
-              <p className="text-[#abb2bf] text-base leading-relaxed">
-                I&apos;m interested in freelance opportunities. However, if you have other request or question, don&apos;t hesitate to contact me
-              </p>
-            </div>
+          <ScrollReveal>
+            <div className="flex flex-col lg:flex-row gap-8 lg:gap-16">
+              {/* Left side - description */}
+              <motion.div 
+                className="flex-1"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                viewport={{ once: true }}
+              >
+                <p className="text-[#abb2bf] text-base leading-relaxed">
+                  I&apos;m interested in freelance opportunities. However, if you have other request or question, don&apos;t hesitate to contact me
+                </p>
+              </motion.div>
 
-            {/* Right side - contact cards */}
-            <div className="flex flex-col sm:flex-row gap-4">
-              <ContactCard title="Support me here">
-                <p className="text-[#abb2bf] text-base">4149500120690030</p>
-              </ContactCard>
+              {/* Right side - contact cards */}
+              <div className="flex flex-col sm:flex-row gap-4">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.1 }}
+                  viewport={{ once: true }}
+                >
+                  <TiltCard className="h-full">
+                    <ContactCard title="Support me here">
+                      <p className="text-[#abb2bf] text-base">4149500120690030</p>
+                    </ContactCard>
+                  </TiltCard>
+                </motion.div>
 
-              <ContactCard title="Message me here">
-                <ContactLink icon={DiscordIcon} label="Nipa#1234" />
-                <ContactLink icon={EmailIcon} label="nipa@nipa-dev.ml" href="mailto:nipa@nipa-dev.ml" />
-              </ContactCard>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                  viewport={{ once: true }}
+                >
+                  <TiltCard className="h-full">
+                    <ContactCard title="Message me here">
+                      <ContactLink icon={DiscordIcon} label="Nipa#1234" />
+                      <ContactLink icon={EmailIcon} label="nipa@nipa-dev.ml" href="mailto:nipa@nipa-dev.ml" />
+                    </ContactCard>
+                  </TiltCard>
+                </motion.div>
+              </div>
             </div>
-          </div>
+          </ScrollReveal>
         </div>
       </section>
 
       {/* Contact Form Section */}
-      <section className="py-8 md:py-12">
+      <section className="py-8 md:py-12 relative z-20">
         <div className="max-w-6xl mx-auto px-4 lg:px-8">
-          <form className="flex flex-col gap-4 max-w-lg">
-            <div className="flex flex-col sm:flex-row gap-4">
-              <input
-                type="text"
-                placeholder="Name"
-                className="flex-1 bg-transparent border border-[#abb2bf] p-2 text-white text-base placeholder:text-[#abb2bf] focus:outline-none focus:border-[#c778dd] transition-colors"
-              />
-              <input
-                type="email"
-                placeholder="Email"
-                className="flex-1 bg-transparent border border-[#abb2bf] p-2 text-white text-base placeholder:text-[#abb2bf] focus:outline-none focus:border-[#c778dd] transition-colors"
-              />
-            </div>
-            <input
-              type="text"
-              placeholder="Title"
-              className="w-full bg-transparent border border-[#abb2bf] p-2 text-white text-base placeholder:text-[#abb2bf] focus:outline-none focus:border-[#c778dd] transition-colors"
-            />
-            <textarea
-              placeholder="Message"
-              rows={5}
-              className="w-full bg-transparent border border-[#abb2bf] p-2 text-white text-base placeholder:text-[#abb2bf] focus:outline-none focus:border-[#c778dd] transition-colors resize-none"
-            />
-            <button
-              type="submit"
-              className="self-start border border-[#c778dd] px-4 py-2 text-white font-medium text-base hover:bg-[#c778dd]/10 transition-colors cursor-pointer"
+          <ScrollReveal>
+            <motion.form 
+              className="flex flex-col gap-4 max-w-lg"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
             >
-              Send
-            </button>
-          </form>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <motion.input
+                  type="text"
+                  placeholder="Name"
+                  className="flex-1 bg-transparent border border-[#abb2bf] p-2 text-white text-base placeholder:text-[#abb2bf] focus:outline-none focus:border-[#c778dd] transition-colors"
+                  whileFocus={{ scale: 1.02, borderColor: "#c778dd" }}
+                />
+                <motion.input
+                  type="email"
+                  placeholder="Email"
+                  className="flex-1 bg-transparent border border-[#abb2bf] p-2 text-white text-base placeholder:text-[#abb2bf] focus:outline-none focus:border-[#c778dd] transition-colors"
+                  whileFocus={{ scale: 1.02, borderColor: "#c778dd" }}
+                />
+              </div>
+              <motion.input
+                type="text"
+                placeholder="Title"
+                className="w-full bg-transparent border border-[#abb2bf] p-2 text-white text-base placeholder:text-[#abb2bf] focus:outline-none focus:border-[#c778dd] transition-colors"
+                whileFocus={{ scale: 1.02, borderColor: "#c778dd" }}
+              />
+              <motion.textarea
+                placeholder="Message"
+                rows={5}
+                className="w-full bg-transparent border border-[#abb2bf] p-2 text-white text-base placeholder:text-[#abb2bf] focus:outline-none focus:border-[#c778dd] transition-colors resize-none"
+                whileFocus={{ scale: 1.02, borderColor: "#c778dd" }}
+              />
+              <motion.button
+                type="submit"
+                className="self-start border border-[#c778dd] px-4 py-2 text-white font-medium text-base hover:bg-[#c778dd]/10 transition-colors cursor-pointer"
+                whileHover={{ scale: 1.05, backgroundColor: "rgba(199, 120, 221, 0.2)" }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Send
+              </motion.button>
+            </motion.form>
+          </ScrollReveal>
         </div>
       </section>
 
       {/* All Media Section */}
-      <section className="py-8 md:py-12">
+      <section className="py-8 md:py-12 relative z-20">
         <div className="max-w-6xl mx-auto px-4 lg:px-8">
-          <SectionHeader title="all-media" />
-          <div className="flex flex-wrap gap-4">
-            <ContactLink icon={TwitterIcon} label="@elias" href="https://twitter.com/elias" />
-            <ContactLink icon={TwitterIcon} label="@elias" href="https://twitter.com/elias" />
-          </div>
+          <ScrollReveal>
+            <SectionHeader title="all-media" />
+            <motion.div 
+              className="flex flex-wrap gap-4"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true }}
+            >
+              <ContactLink icon={TwitterIcon} label="@elias" href="https://twitter.com/elias" />
+              <ContactLink icon={TwitterIcon} label="@elias" href="https://twitter.com/elias" />
+            </motion.div>
+          </ScrollReveal>
         </div>
       </section>
-
-      <Footer />
     </div>
   );
 }

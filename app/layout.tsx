@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { Fira_Code } from "next/font/google";
 import "./globals.css";
 import CustomCursor from "./components/CustomCursor";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import MediaSidebar from "./components/MediaSidebar";
 
 
 const firaCode = Fira_Code({
@@ -23,10 +26,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${firaCode.variable} antialiased`}
+        className={`${firaCode.variable} antialiased bg-[#282c33]`}
       >
         <CustomCursor />
+        <Header />
+        <MediaSidebar />
         {children}
+        <Footer />
       </body>
     </html>
   );
