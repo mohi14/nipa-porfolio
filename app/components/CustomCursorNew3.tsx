@@ -12,7 +12,7 @@ export default function CustomCursor() {
   const targetRef = useRef({ x: -100, y: -100 });
   const currentRef = useRef({ x: -100, y: -100 });
   const rippleId = useRef(0);
-  const animationRef = useRef<number>();
+  const animationRef = useRef<number | null>(null);
 
   const updateCursorType = useCallback((e: MouseEvent) => {
     const target = e.target as HTMLElement;
